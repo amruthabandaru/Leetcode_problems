@@ -1,14 +1,15 @@
 class Solution:
-    def sortColors(self, nums):
-        low, mid, high = 0, 0, len(nums) - 1
-        while mid <= high:
-            if nums[mid] == 0:
-                nums[low], nums[mid] = nums[mid], nums[low]
-                low += 1
-                mid += 1
-            elif nums[mid] == 1:
-                mid += 1
-            else:
-                nums[mid], nums[high] = nums[high], nums[mid]
-                high -= 1
-
+    def sortColors(self, nums: List[int]) -> None:
+        d=dict()
+        for i in range(3):
+            d[i]=0
+        for num in nums:
+            d[num]=d[num]+1
+        nums.clear()
+        for(k,v) in d.items():
+            for i in range(v):
+                nums.append(k)
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        
